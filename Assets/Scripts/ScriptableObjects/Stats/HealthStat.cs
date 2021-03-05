@@ -10,6 +10,7 @@ public class HealthStat : Stat
 
     public override void DoUpdate()
     {
+        base.DoUpdate();
         IsAliveCheck();
     }
 

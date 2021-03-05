@@ -13,14 +13,6 @@ public class MovementStat : Stat
     public float RunSpeed { get => runSpeed; }
 
     [SerializeField]
-    private bool isRunning;
-    public bool IsRunning { get => isRunning; set => isRunning = value; }
-
-    [SerializeField]
-    private bool canRun;
-    public bool CanRun { get => canRun; set => canRun = value; }
-
-    [SerializeField]
     private float jumpHeight;
     public float JumpHeight { get => jumpHeight; }
 
@@ -29,8 +21,8 @@ public class MovementStat : Stat
     public float FallMultiplier { get => fallMultiplier; }
 
     [SerializeField]
-    private float lowJumpMultipier;
-    public float LowJumpMultipier { get => lowJumpMultipier; }
+    private float lowJumpMultiplier;
+    public float LowJumpMultiplier { get => lowJumpMultiplier; }
 
     public override void DoUpdate()
     {

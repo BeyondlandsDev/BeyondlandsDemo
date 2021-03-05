@@ -3,27 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-//[CreateAssetMenu(fileName = "STAT_newStat", menuName = "Stats/Stat")]
 public class Stat : ScriptableObject
 {
-    //public StatType Type;
     public string Name;
-    //public FloatReference Reference;
+
+    [Tooltip("CurrentValue/MaxValue = percent. MaxValue is 100. See derived classes for specific stat values like walk speed.")]
     public float MaxValue;
     public float CurrentValue;
 
     private void OnEnable()
     {
         CurrentValue = MaxValue;
-        //CurrentValue = Reference.Value;
     }
 
-    public virtual void DoUpdate() { }
+    public virtual void DoUpdate() 
+    {
+        StatCleanUp();
+    }
+
+    public void StatCleanUp()
+    {
+        if (CurrentValue > MaxValue)
+            ResetValue();
+        if (CurrentValue < 0)
+            CurrentValue = 0;
+    }
+
+    public float GetValue()
+    {
+        return CurrentValue;
+    }
 
     public float GetMax()
     {
         return MaxValue;
-        //return Reference.Variable.DefaultValue;
     }
 
     public void ChangeValue(float value)
@@ -34,6 +47,5 @@ public class Stat : ScriptableObject
     public void ResetValue()
     {
         CurrentValue = MaxValue;
-        //CurrentValue = Reference.Value;
     }
 }

@@ -9,8 +9,8 @@ public class UI_StatDisplay : MonoBehaviour
     public Stat Stat;
 
     [SerializeField]
-    //private Image bar;
-    private TMP_Text text;
+    private Image bar;
+    //private TMP_Text text;
 
     private void Update()
     {
@@ -19,6 +19,6 @@ public class UI_StatDisplay : MonoBehaviour
 
     public void UpdateStat()
     {
-        text.text = (Stat.CurrentValue).ToString();
+        bar.fillAmount = (Stat.CurrentValue/Stat.MaxValue);
     }
 }

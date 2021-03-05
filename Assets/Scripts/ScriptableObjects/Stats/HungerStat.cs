@@ -5,8 +5,12 @@ using UnityEngine;
 public class HungerStat : Stat
 {
     [SerializeField]
-    private float hungerTick;
-    public float HungerTick { get => hungerTick; }
+    private float hungerDrain;
+    public float HungerDrain { get => hungerDrain; set => hungerDrain = value; }
+
+    [SerializeField]
+    private float hungerRegen;
+    public float HungerRegen { get => hungerRegen; set => hungerRegen = value; }
 
     [SerializeField]
     private bool isStarving;
@@ -20,7 +24,7 @@ public class HungerStat : Stat
     private void DoStatTick()
     {
         if (CurrentValue > 0)
-            CurrentValue -= HungerTick * Time.deltaTime;
+            CurrentValue -= HungerDrain * Time.deltaTime;
         else
             IsStarving = true;
     }

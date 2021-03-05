@@ -13,7 +13,11 @@ public class PlayerReferences
 
     [Header("Player Stats Set")]
     public StatSet PlayerStats;
+    public MovementStat MovementStat;   
+    public StaminaStat StaminaStat;
 
     [Header("Global Game Settings")]
     public GameSettings GameSettings;
+
+    public FloatReference Gravity;
 }

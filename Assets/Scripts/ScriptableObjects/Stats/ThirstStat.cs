@@ -5,8 +5,12 @@ using UnityEngine;
 public class ThirstStat : Stat
 {
     [SerializeField]
-    private float thirstTick;
-    public float ThirstTick { get => thirstTick; }
+    private float thirstDrain;
+    public float ThirstDrain { get => thirstDrain; set => thirstDrain = value; }
+
+    [SerializeField]
+    private float thirstRegen;
+    public float ThirstRegen { get => thirstRegen; set => thirstRegen = value; }
 
     [SerializeField]
     private bool isDehydrated;
@@ -20,7 +24,7 @@ public class ThirstStat : Stat
     private void DoStatTick()
     {
         if (CurrentValue > 0)
-            CurrentValue -= thirstTick * Time.deltaTime;
+            CurrentValue -= thirstDrain * Time.deltaTime;
         else
             IsDehydrated = true;
     }

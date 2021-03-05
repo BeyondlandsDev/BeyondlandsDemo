@@ -1,11 +1,12 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
     public PlayerReferences Player = new PlayerReferences();
-    public PlayerMovementReferences MovementRef = new PlayerMovementReferences();
+    //public PlayerMovementReferences MovementRef = new PlayerMovementReferences();
 
     [Header("Targeting")]
     public PlayerTarget TargetInfo;
@@ -17,24 +18,32 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Player.MovementStat.CurrentValue = Player.MovementStat.WalkSpeed;
     }
 
     void Update()
     {
         movement.Move(transform, Player.CharacterController,
-            StatValue(MovementRef.MoveStat), StatValue(MovementRef.JumpStat), MovementRef.Gravity, 
-            Player.GroundCollider, Player.GroundMask, StatValue(MovementRef.FallMultiplier), 
-            StatValue(MovementRef.LowJumpMultiplier));
+            Player.MovementStat, Player.StaminaStat, Player.Gravity, 
+            Player.GroundCollider, Player.GroundMask);
 
         mouseLook.MouseLook(Player.PlayerCamera, transform,
             Player.GameSettings.MouseSensitivity);
 
         TargetInfo.CheckForTarget(Player.PlayerCamera);
+
+        Player.MovementStat.DoUpdate();
+        Player.StaminaStat.DoUpdate();
+
+        if (Player.StaminaStat.IsFatigued)
+            StartCoroutine(FatigueCoolDown());
     }
 
-    public float StatValue(StatType statType)
+    private IEnumerator FatigueCoolDown()
     {
-        return Player.PlayerStats.Get(statType).CurrentValue;
+        yield return new WaitForSeconds(3f);
+        Player.StaminaStat.IsFatigued = false;
     }
+
 }
 

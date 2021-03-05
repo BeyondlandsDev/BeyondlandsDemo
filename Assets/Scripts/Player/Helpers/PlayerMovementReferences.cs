@@ -4,10 +4,10 @@ using UnityEngine;
 [Serializable]
 public class PlayerMovementReferences
 {
-    [Header("Stat Types")]
-    public StatType MoveStat;
-    public StatType JumpStat;
-    public StatType FallMultiplier;
-    public StatType LowJumpMultiplier;
+    [Header("Movement Stats")]
+    public Stat MoveStat;
+    public Stat JumpStat;
+    public Stat FallMultiplier;
+    public Stat LowJumpMultiplier;
     public FloatReference Gravity;
 }
