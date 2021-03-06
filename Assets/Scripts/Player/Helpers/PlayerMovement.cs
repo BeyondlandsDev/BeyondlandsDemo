@@ -5,10 +5,26 @@ public class PlayerMovement
 {
     private Vector3 velocity;
     //public float CurrentSpeed;
+    private Transform transform;
+    private CharacterController characterController;
+    private MovementStat moveStat;
+    private StaminaStat staminaStat;
+    private float gravity;
+    private Transform groundCollider;
+    private LayerMask groundMask;
 
-    public void Move(Transform transform, CharacterController characterController, 
-        MovementStat moveStat, StaminaStat staminaStat, float gravity, Transform groundCollider, 
-        LayerMask groundMask)
+    public PlayerMovement(PlayerReferences playerRef, Transform playerTransform)
+    {
+        transform = playerTransform;
+        characterController = playerRef.CharacterController;
+        moveStat = playerRef.MovementStat;
+        staminaStat = playerRef.StaminaStat;
+        gravity = playerRef.Gravity;
+        groundCollider = playerRef.GroundCollider;
+        groundMask = playerRef.GroundMask;
+    }
+
+    public void Move()
     {
         float groundDistance = 0.4f;
 

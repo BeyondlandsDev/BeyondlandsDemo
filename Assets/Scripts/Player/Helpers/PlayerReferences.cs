@@ -11,13 +11,16 @@ public class PlayerReferences
     public Transform GroundCollider;
     public LayerMask GroundMask;
 
-    [Header("Player Stats Set")]
-    public StatSet PlayerStats;
+    [Header("Player Stats")]
+    //public StatSet PlayerStats;
+    public HealthStat HealthStat;
     public MovementStat MovementStat;   
     public StaminaStat StaminaStat;
+    public HungerStat HungerStat;
+    public ThirstStat ThirstStat;
+    public SanityStat SanityStat;
 
     [Header("Global Game Settings")]
     public GameSettings GameSettings;
-
     public FloatReference Gravity;
 }

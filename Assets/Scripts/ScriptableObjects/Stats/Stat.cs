@@ -11,7 +11,10 @@ public class Stat : ScriptableObject
     public float MaxValue;
     public float CurrentValue;
 
-    private void OnEnable()
+    public bool NoDrain;
+    public bool NoRegen;
+
+    public virtual void OnEnable()
     {
         CurrentValue = MaxValue;
     }
@@ -23,10 +26,11 @@ public class Stat : ScriptableObject
 
     public void StatCleanUp()
     {
-        if (CurrentValue > MaxValue)
-            ResetValue();
-        if (CurrentValue < 0)
-            CurrentValue = 0;
+        CurrentValue = Mathf.Clamp(CurrentValue, 0, MaxValue);
+        // if (CurrentValue > MaxValue)
+        //     ResetValue();
+        // if (CurrentValue < 0)
+        //     CurrentValue = 0;
     }
 
     public float GetValue()

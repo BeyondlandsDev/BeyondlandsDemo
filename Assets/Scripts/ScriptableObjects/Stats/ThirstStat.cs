@@ -2,30 +2,20 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "STAT_newThirstStat", menuName = "Stats/Thirst Stat")]
-public class ThirstStat : Stat
+public class ThirstStat : SurvivalStat
 {
-    [SerializeField]
-    private float thirstDrain;
-    public float ThirstDrain { get => thirstDrain; set => thirstDrain = value; }
-
-    [SerializeField]
-    private float thirstRegen;
-    public float ThirstRegen { get => thirstRegen; set => thirstRegen = value; }
-
     [SerializeField]
     private bool isDehydrated;
     public bool IsDehydrated { get => isDehydrated; set => isDehydrated = value; }
 
-    public override void DoUpdate()
+    public override void OnEnable()
     {
-        DoStatTick();
+        base.OnEnable();
+        IsDehydrated = false;
     }
 
-    private void DoStatTick()
+    public override void DoUpdate()
     {
-        if (CurrentValue > 0)
-            CurrentValue -= thirstDrain * Time.deltaTime;
-        else
-            IsDehydrated = true;
+        base.DoUpdate();
     }
 }

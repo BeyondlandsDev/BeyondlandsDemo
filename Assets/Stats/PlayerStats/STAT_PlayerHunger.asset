@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e5a9c423ad184d4491313f1bbba9c93, type: 3}
-  m_Name: STAT_PlayerHealth
+  m_Script: {fileID: 11500000, guid: d8667f31edae48040aba16874367bb4c, type: 3}
+  m_Name: STAT_PlayerHunger
   m_EditorClassIdentifier: 
-  Name: Player Health
+  Name: Player Hunger
   MaxValue: 100
   CurrentValue: 100
   NoDrain: 0
-  NoRegen: 1
-  baseDrain: 5
+  NoRegen: 0
+  baseDrain: 1
   baseRegen: 5
   drainModifier: 1
   regenModifier: 1
-  isDead: 0
+  isStarving: 0

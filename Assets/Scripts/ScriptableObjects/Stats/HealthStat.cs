@@ -2,23 +2,20 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "STAT_newHealthStat", menuName = "Stats/Health Stat")]
-public class HealthStat : Stat
+public class HealthStat : SurvivalStat
 {
     [SerializeField]
-    private bool isAlive = true;
-    public bool IsAlive { get => isAlive; set => isAlive = value; }
+    private bool isDead = false;
+    public bool IsDead { get => isDead; set => isDead = value; }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        IsDead = false;
+    }
 
     public override void DoUpdate()
     {
         base.DoUpdate();
-        IsAliveCheck();
-    }
-
-    public void IsAliveCheck()
-    {
-        if (CurrentValue <= 0)
-            isAlive = false;
-        else
-            isAlive = true;
     }
 }

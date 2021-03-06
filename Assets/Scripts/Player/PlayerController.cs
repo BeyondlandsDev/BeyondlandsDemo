@@ -11,29 +11,36 @@ public class PlayerController : MonoBehaviour
     [Header("Targeting")]
     public PlayerTarget TargetInfo;
 
-    public PlayerMouseLook mouseLook = new PlayerMouseLook();
-    public PlayerMovement movement = new PlayerMovement();
+    public PlayerMouseLook mouseLook;
+    public PlayerMovement movement;
+    public PlayerStatHelper statHelper;
 
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Player.MovementStat.CurrentValue = Player.MovementStat.WalkSpeed;
+        movement = new PlayerMovement(Player, transform);
+        mouseLook = new PlayerMouseLook(Player, transform);
+        statHelper = new PlayerStatHelper(Player);
     }
 
     void Update()
     {
-        movement.Move(transform, Player.CharacterController,
-            Player.MovementStat, Player.StaminaStat, Player.Gravity, 
-            Player.GroundCollider, Player.GroundMask);
+        movement.Move();
 
-        mouseLook.MouseLook(Player.PlayerCamera, transform,
-            Player.GameSettings.MouseSensitivity);
+        mouseLook.MouseLook();
 
         TargetInfo.CheckForTarget(Player.PlayerCamera);
 
         Player.MovementStat.DoUpdate();
         Player.StaminaStat.DoUpdate();
+        Player.HealthStat.DoUpdate();
+
+        statHelper.Tick();
+
+        // Player.HungerStat.DoUpdate();
+        // Player.ThirstStat.DoUpdate();
 
         if (Player.StaminaStat.IsFatigued)
             StartCoroutine(FatigueCoolDown());

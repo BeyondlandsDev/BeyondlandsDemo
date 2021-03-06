@@ -3,8 +3,18 @@
 public class PlayerMouseLook
 {
     private float xRotation = 0f;
+    private Camera cam;
+    private Transform transform;
+    private float mouseSensitivity;
 
-    public void MouseLook(Camera cam, Transform transform, float mouseSensitivity)
+    public PlayerMouseLook(PlayerReferences playerRef, Transform playerTransform)
+    {
+        cam = playerRef.PlayerCamera;
+        transform = playerTransform;
+        mouseSensitivity = playerRef.GameSettings.MouseSensitivity;
+    }
+
+    public void MouseLook()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
