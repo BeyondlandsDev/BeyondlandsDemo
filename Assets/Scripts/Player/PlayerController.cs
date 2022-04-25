@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IHasInventory
 {
     [Header("References")]
     public PlayerReferences Player = new PlayerReferences();
@@ -11,33 +11,37 @@ public class PlayerController : MonoBehaviour
     [Header("Targeting")]
     public PlayerTarget TargetInfo;
 
-    public PlayerMouseLook mouseLook;
-    public PlayerMovement movement;
-    public PlayerStatHelper statHelper;
+    public PlayerMouseLook MouseLook;
+    public PlayerMovement Movement;
+    public PlayerStatHelper StatHelper;
 
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Player.MovementStat.CurrentValue = Player.MovementStat.WalkSpeed;
-        movement = new PlayerMovement(Player, transform);
-        mouseLook = new PlayerMouseLook(Player, transform);
-        statHelper = new PlayerStatHelper(Player);
+        TargetInfo = new PlayerTarget(Player);
+        Movement = new PlayerMovement(Player, transform);
+        MouseLook = new PlayerMouseLook(Player, transform);
+        StatHelper = new PlayerStatHelper(Player);
+        Player.PlayerTransform.TransformDirection(Vector3.forward);
+        //MouseLook.LookAhead();
+        //Player.Inventory.Player = this;
     }
 
     void Update()
     {
-        movement.Move();
+        Movement.Move();
 
-        mouseLook.MouseLook();
+        MouseLook.MouseLook();
 
-        TargetInfo.CheckForTarget(Player.PlayerCamera);
+        TargetInfo.CheckForTarget();
 
         Player.MovementStat.DoUpdate();
         Player.StaminaStat.DoUpdate();
         Player.HealthStat.DoUpdate();
 
-        statHelper.Tick();
+        StatHelper.Tick();
 
         // Player.HungerStat.DoUpdate();
         // Player.ThirstStat.DoUpdate();
@@ -51,6 +55,5 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         Player.StaminaStat.IsFatigued = false;
     }
-
 }
 

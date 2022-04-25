@@ -1,13 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public InteractableAction Action;
+    [SerializeField]
+    private string nameText;
+    public string NameText { get => nameText; set => nameText = value;}
 
-    public void Interact()
+    [SerializeField]
+    private string actionText;
+    public string ActionText { get => actionText; set => actionText = value; }
+
+    public virtual void Interact(PlayerReferences player)
     {
-        Action.Action(this);
+        //do common stuff?
     }
 }

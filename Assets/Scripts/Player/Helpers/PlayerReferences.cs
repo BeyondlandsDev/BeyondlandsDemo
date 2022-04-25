@@ -20,6 +20,15 @@ public class PlayerReferences
     public ThirstStat ThirstStat;
     public SanityStat SanityStat;
 
+    [Header("Current Target")]
+    public InteractableVariable Target;
+
+    [Header("Inventory")]
+    public Inventory Inventory;
+
+    [Header("Available Recipes")]
+    public RecipesDatabase KnownRecipes;
+
     [Header("Global Game Settings")]
     public GameSettings GameSettings;
     public FloatReference Gravity;

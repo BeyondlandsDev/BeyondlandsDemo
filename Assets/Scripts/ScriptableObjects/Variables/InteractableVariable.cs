@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using System;
 
+[Serializable]
 [CreateAssetMenu(fileName ="VAR_newInteractableVariable", menuName ="Variables/Interactable Variable")]
 public class InteractableVariable : ScriptableObject
 {

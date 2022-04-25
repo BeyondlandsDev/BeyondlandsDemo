@@ -1,0 +1,189 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7478fc468ee3a754c8904725f2e78877, type: 3}
+  m_Name: PlayerInventory
+  m_EditorClassIdentifier: 
+  InventorySlots:
+  - ID: 1
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 2
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 3
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 4
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 5
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 6
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 7
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 8
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 9
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 10
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 11
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 12
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 13
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 14
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 15
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 16
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 17
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 18
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 19
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 20
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 21
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 22
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 23
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 24
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 25
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 26
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 27
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 28
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 29
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 30
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 31
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 32
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 33
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 34
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 35
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 36
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 37
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 38
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 39
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 40
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 41
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  - ID: 42
+    Stack:
+      Item: {fileID: 0}
+      Amount: 0
+  MaxSlots: 42
+  SelectedItemStack:
+    Item: {fileID: 0}
+    Amount: 0
+  ResetInventory: 1
+  ItemBag: {fileID: 126132871682595260, guid: 9650d67d0d013584ca308c1333d3ebb3, type: 3}

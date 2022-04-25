@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: VAR_MouseSensitivity
   m_EditorClassIdentifier: 
   DeveloperDescription: MouseLook Sensitivity
-  DefaultValue: 100
+  DefaultValue: 200

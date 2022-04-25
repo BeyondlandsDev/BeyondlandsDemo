@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Player Movement
   MaxValue: 100
-  CurrentValue: 1
-  walkSpeed: 1
+  CurrentValue: 5
+  NoDrain: 0
+  NoRegen: 0
+  walkSpeed: 5
   runSpeed: 10
   jumpHeight: 3
   fallMultiplier: 2.5

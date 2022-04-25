@@ -4,11 +4,23 @@ using UnityEngine;
 [Serializable]
 public class PlayerTarget
 {
-    public InteractableVariable target;
-    public float targetDistance = 5f;
-    public LayerMask layerMask;
+    private float targetDistance = 5f;
+    private LayerMask layerMask = LayerMask.GetMask("Interactable");
+    private PlayerReferences player;
+    private Camera cam;
+    private InteractableVariable target;
 
-    public void CheckForTarget(Camera cam)
+    public Interactable CurrentTarget;
+
+    public PlayerTarget(PlayerReferences playerRef)
+    {
+        player = playerRef;
+        target = playerRef.Target;
+        //layerMask = LayerMask.GetMask("Interactable");
+        cam = playerRef.PlayerCamera;
+    }
+
+    public void CheckForTarget()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out RaycastHit hit, targetDistance, layerMask);
@@ -16,14 +28,16 @@ public class PlayerTarget
         if (hit.collider == null)
         {
             target.CurrentValue = null;
+            CurrentTarget = null;
             return;
         }
 
         target.CurrentValue = hit.collider.GetComponent<Interactable>();
+        CurrentTarget = target.CurrentValue;
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("Interact"))
         {
-            target.CurrentValue.Interact();
+            target.CurrentValue.Interact(player);
         }
     }
 }

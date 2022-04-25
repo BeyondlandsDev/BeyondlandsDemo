@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Player Thirst
   MaxValue: 100
-  CurrentValue: 100
+  CurrentValue: 92.85864
   NoDrain: 0
   NoRegen: 0
-  baseDrain: 0.5
+  baseDrain: 1.5
   baseRegen: 5
   drainModifier: 1
   regenModifier: 1
