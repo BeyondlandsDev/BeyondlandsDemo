@@ -35,7 +35,7 @@ public class UI_InventoryDisplay : MonoBehaviour
 
     private void FixedUpdate()
     {
-        UpdateDisplay();
+        //UpdateDisplay();
         //UpdateInspectDisplay(CurrentInventory.SelectedItemStack);
     }
 
@@ -131,13 +131,27 @@ public class UI_InventoryDisplay : MonoBehaviour
         //Debug.Log("CLEARING INSPECT");
         for (int i = 0; i < optionButtons.Count; i++)
         {
-            DestroyImmediate(optionButtons[i].gameObject);
+            optionButtons[i].gameObject.SetActive(false);
+            Destroy(optionButtons[i].gameObject);
         }
         ClearOptionButtons();
     }
 
     public void UpdateInspectDisplay(ItemStack stack)
     {
+        if (stack.Item != null)
+        {
+            FillInspectDisplay(stack);
+        }
+        else
+        {
+            ClearInspectDisplay();
+        }
+    }
+
+    public void UpdateInspectDisplay()
+    {
+        var stack = CurrentInventory.SelectedItemStack;
         if (stack.Item != null)
         {
             FillInspectDisplay(stack);

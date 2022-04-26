@@ -19,6 +19,15 @@ public class UI_CraftingDisplay : MonoBehaviour
     [SerializeField] private RecipeIngredientIcon ingredientIconPrefab;
     [SerializeField] private List<RecipeIngredientIcon> ingredientIconsList;
 
+    [SerializeField] private Button craftOneButton;
+    [SerializeField] private Button craftAllButton;
+    [SerializeField] private Button craftFiveButton;
+
+    // [Header("Crafting Buttons On/Off")]
+    // [SerializeField] private bool canCraftOne;
+    // [SerializeField] private bool canCraftFive;
+    // [SerializeField] private bool canCraftAll;
+
     private void Awake()
     {
         FillRecipeList();
@@ -28,19 +37,13 @@ public class UI_CraftingDisplay : MonoBehaviour
     private void OnEnable()
     {
         ClearRecipeInspectDisplay();
-        //ClearIngredientsList();
+        ActivateCraftingButtons();
     }
-
-    // private void OnDisable()
-    // {
-    //     ClearRecipeInspectDisplay();
-    // }
 
     public void FillRecipeList()
     {
         foreach (Recipe recipe in PlayerRecipes.AvailableRecipes)
         {
-            //recipeButtons.Add(Instantiate(recipeSelectButton, recipesButtonGroup.transform));
             var button = Instantiate(recipeSelectButton, recipesButtonGroup.transform);
             button.Icon.sprite = recipe.Result.Item.Icon;
             button.RecipeNameText.text = recipe.Name;
@@ -65,6 +68,7 @@ public class UI_CraftingDisplay : MonoBehaviour
         recipeInspectDisplay.DescriptionText.text = recipe.Result.Item.Description;
         GenerateIngredientIcons(recipe);
         FillIngredientIcons(recipe);
+        ActivateCraftingButtons();
     }
 
     public void GenerateIngredientIcons(Recipe recipe)
@@ -88,14 +92,45 @@ public class UI_CraftingDisplay : MonoBehaviour
     {
         for (int i = 0; i < ingredientIconsList.Count; i++)
         {
-            DestroyImmediate(ingredientIconsList[i].gameObject);
-            //ingredientIconsList.RemoveAt(i);
+            ingredientIconsList[i].gameObject.SetActive(false);
+            Destroy(ingredientIconsList[i].gameObject);
         }
         ingredientIconsList.Clear();
     }
 
     public void ActivateCraftingButtons()
     {
+        if (PlayerRecipes.CurrentSelectedRecipe != null)
+        {
+            craftOneButton.enabled = true;
+            craftAllButton.enabled = true;
+            craftFiveButton.enabled = true;
+            // ButtonEnable(craftOneButton);
+            // ButtonEnable(craftAllButton);
+            // ButtonEnable(craftFiveButton);
+        }
+        else
+        {
+            craftOneButton.enabled = false;
+            craftAllButton.enabled = false;
+            craftFiveButton.enabled = false;
+            // ButtonDisable(craftOneButton);
+            // ButtonDisable(craftAllButton);
+            // ButtonDisable(craftFiveButton);
+        }
+    }
 
+    private void ButtonEnable(Button button)
+    {
+        var text = button.GetComponentInChildren<Text>();
+        text.color = Color.black;
+        button.enabled = true;
+    }
+
+    private void ButtonDisable(Button button)
+    {
+        var text = button.GetComponentInChildren<Text>();
+        text.color = Color.grey;
+        button.enabled = false;
     }
 }

@@ -16,6 +16,7 @@ public class PickupableItem : Interactable
 
         //add item to inventory
         this.gameObject.SetActive(false);
+        Destroy(this.gameObject);
         //remove item gameobject
     }
 }

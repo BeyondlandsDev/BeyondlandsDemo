@@ -29,6 +29,10 @@ public class CraftingManager : MonoBehaviour
     public void CraftAll()
     {
         //craft as many recipe items with the available ingredients
+        var recipe = KnownRecipes.CurrentSelectedRecipe;
+        Debug.Log(GetMaxCraftingAmount(recipe));
+
+        Craft(GetMaxCraftingAmount(recipe));
     }
 
     private bool HasRequiredIngredients(Recipe recipe, int amount)
@@ -60,4 +64,29 @@ public class CraftingManager : MonoBehaviour
     {
         Inventory.AddItem(recipe.Result.Item, recipe.Result.Amount*amount);
     }
+
+    private int GetMaxCraftingAmount(Recipe recipe)
+    {
+        //List<ItemStack> ingredientCounter = new List<ItemStack>();
+        List<int> amounts = new List<int>();
+
+        foreach (ItemStack ingredient in recipe.Ingredients)
+        {
+            if (Inventory.HasItem(ingredient.Item))
+            {
+                int amt = Inventory.GetAmount(ingredient.Item) / ingredient.Amount;
+                amounts.Add(amt);
+            }
+            else
+                return 0;
+        }
+        amounts.Sort();
+        return amounts[0];
+    }
+
+    // public void OnRecipeSelectClick(Recipe recipe)
+    // {
+    //     if (HasRequiredIngredients(recipe, 1))
+
+    // }
 }

@@ -7,24 +7,20 @@ using UnityEngine;
 public class Inventory : ScriptableObject
 {
     public List<InventorySlot> InventorySlots;
-
     public int MaxSlots = 20;
-
     public ItemStack SelectedItemStack;
-
     public bool ResetInventory = false;
-
     public ItemBag ItemBag;
 
-    //public PlayerController Player;
-    
-    private void Awake() 
+    public GameEvent OnInventoryChanged;
+    //public GameEvent OnSelectedItemStackChanged;
+
+    private void Awake()
     {
-        //InventorySlots = new List<InventorySlot>();
         CreateInventory();
     }
-
-    private void OnEnable()
+    
+    private void OnEnable() 
     {
         ClearSelectedStack();
         InventoryResetCheck();
@@ -32,6 +28,7 @@ public class Inventory : ScriptableObject
 
     private void InventoryResetCheck()
     {
+        Debug.Log("RESETING INVENTORY");
         if (ResetInventory)
         {
             ClearInventory();
@@ -44,7 +41,6 @@ public class Inventory : ScriptableObject
         foreach (InventorySlot slot in InventorySlots)
         {
             ClearStack(slot.Stack);
-            //Debug.Log("SLOT " + slot.ID + " STACK CLEARED");
         }
     }
 
@@ -57,6 +53,7 @@ public class Inventory : ScriptableObject
 
     private void CreateInventory()
     {
+        Debug.Log("CREATING INVENTORY");
         InventorySlots = new List<InventorySlot>();
         if (InventorySlots.Count == 0)
         {
@@ -131,7 +128,7 @@ public class Inventory : ScriptableObject
                 InventorySlots[GetSlotIDByItem(item)-1].Stack.CalculateStackWeight();
             }
         }
-        
+        OnInventoryChanged.Raise();
     }
 
     public void RemoveItem(InventoryItem item, int amount)
@@ -146,6 +143,7 @@ public class Inventory : ScriptableObject
             else if (InventorySlots[slotID-1].Stack.Amount < amount)
                 return; //send message that inventory is full
         }
+        OnInventoryChanged.Raise();
     }
 
     // public void UseItem(ConsumableItem item)
@@ -182,6 +180,7 @@ public class Inventory : ScriptableObject
 
     public void ClearSelectedStack()
     {
+        Debug.Log("CLEARING SELECTED STACK");
         SelectedItemStack.Item = null;
         SelectedItemStack.Amount = 0;
     }

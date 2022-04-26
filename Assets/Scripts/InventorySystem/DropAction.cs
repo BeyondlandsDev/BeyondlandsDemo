@@ -15,12 +15,14 @@ public class DropAction : OptionAction
 
         if (stack.Item != null)
         {
-            item = stack.Item;
-            bag = Instantiate(ui.CurrentInventory.ItemBag, player.position+(player.forward*2), player.rotation);
-            bag.SetItem(item);
-            ui.CurrentInventory.RemoveItem(item, 1);
+            if (ui.CurrentInventory.HasItem(stack.Item) && ui.CurrentInventory.GetAmount(stack.Item) >= 1)
+            {
+                item = stack.Item;
+                bag = Instantiate(ui.CurrentInventory.ItemBag, player.position+(player.forward*2), player.rotation);
+                bag.SetItem(item);
+                ui.CurrentInventory.RemoveItem(item, 1);
+            }
         }
-
         ui.UpdateInspectDisplay(stack);
     }
 }

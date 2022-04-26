@@ -17,173 +17,217 @@ MonoBehaviour:
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 1
   - ID: 2
     Stack:
-      Item: {fileID: 0}
-      Amount: 0
+      Item: {fileID: 11400000, guid: 0564f6361427d62409537561d8870a54, type: 2}
+      Amount: 2
+      StackWeight: 0.2
   - ID: 3
     Stack:
-      Item: {fileID: 0}
-      Amount: 0
+      Item: {fileID: 11400000, guid: 53b73ef4071fefc4caaf6f79134c22d5, type: 2}
+      Amount: 1
+      StackWeight: 0.2
   - ID: 4
     Stack:
-      Item: {fileID: 0}
-      Amount: 0
+      Item: {fileID: 11400000, guid: cbb28af8366a2514ea73d04cbf1529cf, type: 2}
+      Amount: 3
+      StackWeight: 0.6
   - ID: 5
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 6
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 7
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 8
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 9
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 10
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 11
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 12
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 13
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 14
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 15
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 16
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 17
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 18
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 19
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 20
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 21
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 22
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 23
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 24
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 25
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 26
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 27
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 28
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 29
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 30
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 31
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 32
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 33
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 34
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 35
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 36
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 37
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 38
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 39
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 40
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 41
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   - ID: 42
     Stack:
       Item: {fileID: 0}
       Amount: 0
+      StackWeight: 0
   MaxSlots: 42
   SelectedItemStack:
     Item: {fileID: 0}
     Amount: 0
+    StackWeight: 1
   ResetInventory: 1
   ItemBag: {fileID: 126132871682595260, guid: 9650d67d0d013584ca308c1333d3ebb3, type: 3}
+  OnInventoryChanged: {fileID: 11400000, guid: 4582ef35c089bd545ba6bc60cc7c99a8, type: 2}
