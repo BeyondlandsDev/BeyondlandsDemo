@@ -1,2 +1,3 @@
-# BeyondlandsDemo
-A robust demo for The Beyondlands, a low-poly Lovecraftian survival game created in Unity.
+# The Beyondlands
+
+A Lovecraftian survival game.

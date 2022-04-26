@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d3be36bb3b69142829eeeb46c2d966, type: 3}
+  m_Name: STAT_PlayerThirst
+  m_EditorClassIdentifier: 
+  Name: Player Thirst
+  MaxValue: 100
+  CurrentValue: 92.85864
+  NoDrain: 0
+  NoRegen: 0
+  baseDrain: 1.5
+  baseRegen: 5
+  drainModifier: 1
+  regenModifier: 1
+  isDehydrated: 0
