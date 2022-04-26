@@ -28,7 +28,6 @@ public class PlayerStatHelper
 
     public void Tick()
     {
-        Debug.Log("TICK");
         HungerDrain();
         ThirstDrain();
         DyingDrain();
