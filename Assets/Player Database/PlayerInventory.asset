@@ -17,22 +17,22 @@ MonoBehaviour:
     Stack:
       Item: {fileID: 0}
       Amount: 0
-      StackWeight: 1
+      StackWeight: 0.4
   - ID: 2
     Stack:
-      Item: {fileID: 11400000, guid: 0564f6361427d62409537561d8870a54, type: 2}
-      Amount: 2
-      StackWeight: 0.2
+      Item: {fileID: 0}
+      Amount: 0
+      StackWeight: 0.1
   - ID: 3
     Stack:
-      Item: {fileID: 11400000, guid: 53b73ef4071fefc4caaf6f79134c22d5, type: 2}
-      Amount: 1
-      StackWeight: 0.2
+      Item: {fileID: 0}
+      Amount: 0
+      StackWeight: 0.4
   - ID: 4
     Stack:
-      Item: {fileID: 11400000, guid: cbb28af8366a2514ea73d04cbf1529cf, type: 2}
-      Amount: 3
-      StackWeight: 0.6
+      Item: {fileID: 0}
+      Amount: 0
+      StackWeight: 0.1
   - ID: 5
     Stack:
       Item: {fileID: 0}
@@ -227,7 +227,7 @@ MonoBehaviour:
   SelectedItemStack:
     Item: {fileID: 0}
     Amount: 0
-    StackWeight: 1
+    StackWeight: 0.6
   ResetInventory: 1
   ItemBag: {fileID: 126132871682595260, guid: 9650d67d0d013584ca308c1333d3ebb3, type: 3}
   OnInventoryChanged: {fileID: 11400000, guid: 4582ef35c089bd545ba6bc60cc7c99a8, type: 2}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class RecipesDatabase : ScriptableObject
 {
     public Recipe CurrentSelectedRecipe;
+    public Recipe CurrentlyCraftingRecipe;
 
     public List<Recipe> AvailableRecipes;
 }

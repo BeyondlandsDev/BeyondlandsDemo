@@ -28,7 +28,7 @@ public class Inventory : ScriptableObject
 
     private void InventoryResetCheck()
     {
-        Debug.Log("RESETING INVENTORY");
+        //Debug.Log("RESETING INVENTORY");
         if (ResetInventory)
         {
             ClearInventory();
@@ -37,7 +37,7 @@ public class Inventory : ScriptableObject
 
     private void ClearInventory()
     {
-        Debug.Log("CLEARING INVENTORY");
+        //Debug.Log("CLEARING INVENTORY");
         foreach (InventorySlot slot in InventorySlots)
         {
             ClearStack(slot.Stack);
@@ -46,7 +46,7 @@ public class Inventory : ScriptableObject
 
     private void ClearStack(ItemStack stack)
     {
-        Debug.Log("CLEARING STACK");
+        //Debug.Log("CLEARING STACK");
         stack.Item = null;
         stack.Amount = 0;
     }
@@ -113,10 +113,10 @@ public class Inventory : ScriptableObject
         Debug.Log("ADDING " + item);
         if (!IsFull())
         {
-            Debug.Log("NOT FULL");
+            //Debug.Log("NOT FULL");
             if (!HasItem(item))
             {
-                Debug.Log("DOESNT HAVE " + item);
+                //Debug.Log("DOESNT HAVE " + item);
                 var slotID = GetEmptySlotID();
                 InventorySlots[slotID-1].Stack.Item = item;
                 InventorySlots[slotID-1].Stack.Amount = amount;
@@ -180,7 +180,7 @@ public class Inventory : ScriptableObject
 
     public void ClearSelectedStack()
     {
-        Debug.Log("CLEARING SELECTED STACK");
+        //Debug.Log("CLEARING SELECTED STACK");
         SelectedItemStack.Item = null;
         SelectedItemStack.Amount = 0;
     }

@@ -6,38 +6,51 @@ using UnityEngine.UI;
 public class UI_CraftingDisplay : MonoBehaviour
 {
     public RecipesDatabase PlayerRecipes;
+    public CraftingQueue RecipeQueue;
     public Sprite DefaultIcon;
 
-    [Header("Crafting Menu")]
+    [Header("Recipe List")]
     [SerializeField] private GridLayoutGroup recipesButtonGroup; 
     [SerializeField] private RecipeSelectButton recipeSelectButton;
 
     [SerializeField] private List<RecipeSelectButton> recipeButtons;
 
+    [Header("Recipe Inspect & Ingredients")]
     [SerializeField] private RecipeInspectDisplay recipeInspectDisplay;
     [SerializeField] private GridLayoutGroup ingredientsListGroup;
     [SerializeField] private RecipeIngredientIcon ingredientIconPrefab;
     [SerializeField] private List<RecipeIngredientIcon> ingredientIconsList;
 
+    [Header("Recipe Queue")]
+    [SerializeField] private GridLayoutGroup queuedRecipesGroup;
+    [SerializeField] private QueuedRecipeIcon queuedRecipeIconPrefab;
+    [SerializeField] private List<QueuedRecipeIcon> queuedRecipeIconList;
+    [SerializeField] private Stack<QueuedRecipeIcon> unusedQueuedRecipeIcons;
+
+    [Header("Crafting Buttons")]
     [SerializeField] private Button craftOneButton;
     [SerializeField] private Button craftAllButton;
     [SerializeField] private Button craftFiveButton;
-
-    // [Header("Crafting Buttons On/Off")]
-    // [SerializeField] private bool canCraftOne;
-    // [SerializeField] private bool canCraftFive;
-    // [SerializeField] private bool canCraftAll;
+    [SerializeField] private Button clearQueueButton;
 
     private void Awake()
     {
         FillRecipeList();
         ClearRecipeInspectDisplay();
+        CreateQueueDisplay();
     }
 
     private void OnEnable()
     {
         ClearRecipeInspectDisplay();
         ActivateCraftingButtons();
+        UpdateQueueDisplay();
+    }
+
+    private void Update()
+    {
+        //CheckQueue();
+        UpdateQueueDisplay();
     }
 
     public void FillRecipeList()
@@ -105,6 +118,7 @@ public class UI_CraftingDisplay : MonoBehaviour
             craftOneButton.enabled = true;
             craftAllButton.enabled = true;
             craftFiveButton.enabled = true;
+            clearQueueButton.enabled = true;
             // ButtonEnable(craftOneButton);
             // ButtonEnable(craftAllButton);
             // ButtonEnable(craftFiveButton);
@@ -114,6 +128,7 @@ public class UI_CraftingDisplay : MonoBehaviour
             craftOneButton.enabled = false;
             craftAllButton.enabled = false;
             craftFiveButton.enabled = false;
+            clearQueueButton.enabled = false;
             // ButtonDisable(craftOneButton);
             // ButtonDisable(craftAllButton);
             // ButtonDisable(craftFiveButton);
@@ -132,5 +147,66 @@ public class UI_CraftingDisplay : MonoBehaviour
         var text = button.GetComponentInChildren<Text>();
         text.color = Color.grey;
         button.enabled = false;
+    }
+
+    private void CreateQueueDisplay()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            queuedRecipeIconList.Add(Instantiate(queuedRecipeIconPrefab, queuedRecipesGroup.transform));
+            //queuedRecipeIconList[i].gameObject.SetActive(false);
+        }
+    }
+
+    public void UpdateQueueDisplay()
+    {
+        ClearQueueDisplay();
+
+        if (RecipeQueue.Queue.Count > 0)
+        {
+            int i = 0;
+            foreach (QueuedRecipe recipe in RecipeQueue.Queue)
+            {
+                if (recipe.Remaining > 0)
+                {
+                    queuedRecipeIconList[i].Icon.sprite = recipe.Recipe.Result.Item.Icon;
+                    queuedRecipeIconList[i].AmountText.text = recipe.Remaining.ToString(); //CHECK IF REMAINING OR AMOUNT
+                    queuedRecipeIconList[i].ProgressBar.fillAmount = Mathf.Lerp(1f, 0f, recipe.Progress);
+                    queuedRecipeIconList[i].gameObject.SetActive(true);
+                    i++;
+                }
+            }
+        }
+        else
+        {
+            ClearQueueDisplay();
+        }
+    }
+
+    public void ClearQueueDisplay()
+    {
+        foreach (QueuedRecipeIcon icon in queuedRecipeIconList)
+        {
+            ClearQueueIcon(icon);
+        }
+    }
+
+    public void ClearQueueIcon(QueuedRecipeIcon icon)
+    {
+        icon.Icon.sprite = DefaultIcon;
+        icon.AmountText.text = ""; //CHECK IF REMAINING OR AMOUNT
+        icon.ProgressBar.fillAmount = 0f;
+        icon.gameObject.SetActive(false);
+    }
+
+    public void RemoveDequeuedRecipeIcon()
+    {
+        queuedRecipeIconList[0].gameObject.SetActive(false);
+    }
+
+    private void CheckQueue()
+    {
+        if (RecipeQueue.Queue.Count > 0)
+            UpdateQueueDisplay();
     }
 }

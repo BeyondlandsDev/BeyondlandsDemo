@@ -10,4 +10,6 @@ public class Recipe : ScriptableObject
     public List<ItemStack> Ingredients;
 
     public ItemStack Result;
+
+    public float Duration;
 }

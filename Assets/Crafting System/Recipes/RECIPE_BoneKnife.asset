@@ -21,3 +21,4 @@ MonoBehaviour:
     Item: {fileID: 11400000, guid: cbb28af8366a2514ea73d04cbf1529cf, type: 2}
     Amount: 1
     StackWeight: 0
+  Duration: 10
